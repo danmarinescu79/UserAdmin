@@ -5,7 +5,7 @@
  * @Date:   2017-11-05 06:55:35
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 06:55:54
+ * @Last Modified time: 2017-11-05 07:09:45
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
@@ -39,7 +39,7 @@ class Login extends Form implements InputFilterProviderInterface
             ],
             'attributes' => [
                 'placeholder' => _('Email'),
-                'class'       => 'form-control input-lg',
+                'class'       => 'form-control',
             ],
         ]);
 
@@ -51,7 +51,7 @@ class Login extends Form implements InputFilterProviderInterface
             ],
             'attributes' => [
                 'placeholder' => _('Password'),
-                'class'       => 'form-control input-lg',
+                'class'       => 'form-control',
             ],
         ]);
 
