@@ -5,7 +5,7 @@
  * @Date:   2017-11-05 06:54:45
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 06:55:07
+ * @Last Modified time: 2017-11-05 07:22:59
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
@@ -49,5 +49,13 @@ class User
     public static function verifyCredential(UserEntity $user, $password)
     {
         return (new Bcrypt())->verify($password, $user->getPassword());
+    }
+
+    public function getForm($edit = false)
+    {
+        if ($edit) {
+            return new \UserAdmin\Form\EditUser($this->objectManager);
+        }
+        return new \UserAdmin\Form\User($this->objectManager);
     }
 }

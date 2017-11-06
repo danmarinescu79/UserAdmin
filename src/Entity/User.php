@@ -5,7 +5,7 @@
  * @Date:   2017-11-05 06:46:39
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 06:48:59
+ * @Last Modified time: 2017-11-05 07:25:34
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserAdmin\Repository\User")
  */
 class User
 {
