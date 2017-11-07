@@ -5,13 +5,13 @@
  * @Date:   2017-11-05 07:20:01
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 07:21:00
+ * @Last Modified time: 2017-11-06 13:53:59
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
 namespace UserAdmin\Controller;
 
-use UserAdmin\Service\User as UserService;
+use UserAdmin\Service\User as Service;
 use Zend\Crypt\Password\Bcrypt;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -20,7 +20,7 @@ class Admin extends AbstractActionController
 {
     protected $service;
 
-    public function __construct(UserService $service)
+    public function __construct(Service $service)
     {
         $this->service = $service;
     }

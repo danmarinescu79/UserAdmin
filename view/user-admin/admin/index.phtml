@@ -1,0 +1,63 @@
+<?php $this->headTitle($this->translate('Manage Users')); ?>
+
+
+<div class="cardbox">
+    <div class="cardbox-heading bg-primary card-inverse">
+        <div class="row">
+            <div class="col-4">
+                <?= $this->translate('Manage Users'); ?>
+            </div>
+            <div class="col-8 text-right">
+                <a href="<?= $this->url('user/admin/add'); ?>" class="btn btn-secondary">
+                    <i class="fa fa-user-plus"></i>
+                    <span><?= $this->translate('Add User'); ?></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center"><?= $this->translate('Email'); ?></th>
+                    <th class="text-center"><?= $this->translate('Role'); ?></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                        <?php if ($this->results->count() > 0): ?>
+                            <?php foreach ($this->results as $result): ?>
+                                <tr>
+                                    <td class="text-center"><?= $result->getId(); ?></td>
+                                    <td class="text-center"><?= $result->getEmail(); ?></td>
+                                    <td class="text-center"><?= empty($result->getRole()) ? $this->translate('Guest') : $result->getRole()->getRole(); ?></td>
+                                    <td class="text-right">
+                                        <a href="<?= $this->url('user/admin/edit', ['userId' => $result->getId()]); ?>" class="btn btn-xs btn-primary">
+                                            <?= $this->translate('Edit'); ?>
+                                        </a>
+                                        <a href="<?= $this->url('user/admin/delete'); ?>" class="btn btn-xs btn-primary confirm-delete">
+                                            <?= $this->translate('Delete'); ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+
+                        <?php else : ?>
+                            <tr>
+                                <td colspan="6">
+                                    <?= $this->translate('No results'); ?>
+                                </td>
+                            </tr>
+
+                        <?php endif ?>
+            </tbody>
+        </table>
+            <?= $this->paginationControl(
+                $this->results,
+                'Sliding',
+                'layout/pagination',
+                ['route' => 'user/admin']
+            ) ?>
+    </div>
+</div>

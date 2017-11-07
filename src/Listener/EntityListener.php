@@ -5,7 +5,7 @@
  * @Date:   2017-11-05 06:57:14
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 06:58:38
+ * @Last Modified time: 2017-11-06 14:14:43
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
@@ -46,6 +46,7 @@ class EntityListener
     public function preUpdate($eventArgs)
     {
         $entity              = $eventArgs->getEntity();
+
         $identity            = Identity::identity();
 
         if (method_exists($entity, 'setUpdatedat')) {

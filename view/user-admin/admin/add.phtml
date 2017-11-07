@@ -1,0 +1,51 @@
+<div class="row">
+        <div class="heading-title heading-dotted text-center">
+            <h1><?= $this->translate('Add User'); ?></h1>
+        </div>
+        
+
+
+            <?php
+                $form->setAttribute('method', 'post');
+                $form->prepare();
+            ?>
+            <?= $this->form()->openTag($form); ?>
+            <div class="col-md-6">
+
+                <div class="form-group <?= !empty($form->get('user')->get('email')->getMessages()) ? 'has-error' : null; ?>">
+                    <?= $this->formLabel($form->get('user')->get('email')); ?>
+                    <?= $this->formInput($form->get('user')->get('email')); ?>
+                    <?= $this->formelementerrors($form->get('user')->get('email')) ?>
+                </div>
+
+                <div class="form-group <?= !empty($form->get('user')->get('role')->getMessages()) ? 'has-error' : null; ?>">
+                    <?= $this->formLabel($form->get('user')->get('role')); ?>
+                    <?= $this->formSelect($form->get('user')->get('role')); ?>
+                    <?= $this->formelementerrors($form->get('user')->get('role')) ?>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group <?= !empty($form->get('user')->get('password')->getMessages()) ? 'has-error' : null; ?>">
+                    <?= $this->formLabel($form->get('user')->get('password')); ?>
+                    <?= $this->formInput($form->get('user')->get('password')); ?>
+                    <?= $this->formelementerrors($form->get('user')->get('password')) ?>
+                </div>
+
+                <div class="form-group <?= !empty($form->get('user')->get('verify_password')->getMessages()) ? 'has-error' : null; ?>">
+                    <?= $this->formLabel($form->get('user')->get('verify_password')); ?>
+                    <?= $this->formInput($form->get('user')->get('verify_password')); ?>
+                    <?= $this->formelementerrors($form->get('user')->get('verify_password')) ?>
+                </div>
+            </div>
+        <div class="row text-right">
+            
+
+            <?= $this->formElement($form->get('user')->get('id')); ?>
+            <?= $this->formelementerrors($form->get('security')) ?>
+            <?= $this->formInput($form->get('submit')); ?>
+            <?= $this->formElement($form->get('security')) ?>
+                <a href="<?= $this->url('user/admin'); ?>" class="btn btn-dark-outline btn-md"><?= $this->translate('Cancel'); ?></a>
+            <?= $this->form()->closeTag(); ?>
+        </div>
+    </div>

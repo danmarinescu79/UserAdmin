@@ -5,7 +5,7 @@
  * @Date:   2017-11-05 05:36:02
  * @Email:  dan.marinescu79@icloud.com
  * @Last Modified by:   Dan Marinescu
- * @Last Modified time: 2017-11-05 07:00:13
+ * @Last Modified time: 2017-11-06 13:56:46
  * @Last Modified email: dan.marinescu79@icloud.com
  */
 
@@ -17,6 +17,59 @@ use Zend\Router\Http\Segment;
 return [
     'router' => [
         'routes' => [
+            'user' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/user',
+                ],
+                'may_terminate' => true,
+                'child_routes'  => [
+                    'admin' => [
+                        'type'    => Segment::class,
+                        'options' => [
+                            'route'    => '/admin',
+                            'defaults' => [
+                                'controller' => Controller\Admin::class,
+                                'action'     => 'index',
+                            ],
+                        ],
+                        'may_terminate' => true,
+                        'child_routes'  => [
+                            'add' => [
+                                'type'    => Segment::class,
+                                'options' => [
+                                    'route'    => '/add',
+                                    'defaults' => [
+                                        'controller' => Controller\Admin::class,
+                                        'action'     => 'add',
+                                    ],
+                                ],
+                            ],
+                            'edit' => [
+                                'type'    => Segment::class,
+                                'options' => [
+                                    'route'    => '/edit/:userId',
+                                    'defaults' => [
+                                        'controller' => Controller\Admin::class,
+                                        'action'     => 'edit',
+                                        'userId'     => false,
+                                    ],
+                                ],
+                            ],
+                            'delete' => [
+                                'type'    => Segment::class,
+                                'options' => [
+                                    'route'    => '/delete',
+                                    'defaults' => [
+                                        'controller' => Controller\Admin::class,
+                                        'action'     => 'index',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
             'account' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -56,7 +109,8 @@ return [
     ],
     'controllers' => [
         'factories' => [
-            Controller\User::class => Factory\Controller\User::class,
+            Controller\Admin::class => Factory\Controller\Admin::class,
+            Controller\User::class  => Factory\Controller\User::class,
         ],
     ],
     'service_manager' => [
